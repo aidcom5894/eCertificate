@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 11, 2025 at 04:10 PM
--- Server version: 8.0.41-0ubuntu0.20.04.1
--- PHP Version: 7.4.3-4ubuntu2.29
+-- Host: localhost
+-- Generation Time: Apr 11, 2025 at 03:22 PM
+-- Server version: 8.0.41-0ubuntu0.22.04.1
+-- PHP Version: 8.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,16 +29,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `student_directory` (
   `id` int NOT NULL,
-  `student_name` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
-  `father_name` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
-  `mother_name` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
-  `contact_no` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `previous_degree` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
-  `selected_course` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
-  `student_aadhar` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
-  `student_image` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
-  `student_uniqueID` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
-  `qr_details` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
+  `student_name` varchar(360) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `father_name` varchar(360) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `mother_name` varchar(360) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `contact_no` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `previous_degree` varchar(360) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `selected_course` varchar(360) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `student_aadhar` varchar(360) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `student_image` varchar(360) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `student_uniqueID` varchar(360) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `qr_details` varchar(360) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `qr_detailed_address` varchar(360) COLLATE utf8mb4_general_ci NOT NULL,
   `application_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -47,8 +47,14 @@ CREATE TABLE `student_directory` (
 -- Dumping data for table `student_directory`
 --
 
-INSERT INTO `student_directory` (`id`, `student_name`, `father_name`, `mother_name`, `contact_no`, `previous_degree`, `selected_course`, `student_aadhar`, `student_image`, `student_uniqueID`, `qr_details`, `application_date`) VALUES
-(1, 'SDFGSF', 'sdfgsfg', 'sdfgsfdg', '3453453453', 'dfgdfg', 'Tally', '344444444444', 'http://localhost/eCertificate/uploads/67f8ef8aa518a_63.jpg', 'KXGVF5A0', 'QR Content', '2025-04-11 10:31:38');
+INSERT INTO `student_directory` (`id`, `student_name`, `father_name`, `mother_name`, `contact_no`, `previous_degree`, `selected_course`, `student_aadhar`, `student_image`, `student_uniqueID`, `qr_details`, `qr_detailed_address`, `application_date`) VALUES
+(1, 'asdfasdf', 'asdf', 'asdfasdf', '2342342342', 'afsdf', 'Tally', '243451245234', 'http://localhost/eCertificate/uploads/67f92a386a6eb_Abhay.png', 'Z0H5GY3X', 'asdfasdf', 'http://localhost/eCertificate/students_certificate.php?student_uniqueID=Z0H5GY3X', '2025-04-11 14:42:00'),
+(2, 'avdfa', 'sdfas', 'dfasdf', '2354575635', 'sdfgs', 'Photoshop', '567986797878', 'http://localhost/eCertificate/uploads/67f92ae879110_kochi2.png', '0ETUA6VW', 'http://localhost/eCertificate/qrcodes/0ETUA6VW.png', 'http://localhost/eCertificate/students_certificate.php?student_uniqueID=0ETUA6VW', '2025-04-11 14:44:56'),
+(3, 'Vjasdj', 'lVijea', 'kjsadk2', '1322454312', 'bf', 'Tally', '321324634354', 'http://localhost/eCertificate/uploads/67f92bb852ed0_landscape.jpg', 'G8D9AVSI', 'http://localhost/eCertificate/qrcodes/G8D9AVSI.png', 'http://localhost/eCertificate/students_certificate.php?student_uniqueID=G8D9AVSI', '2025-04-11 14:48:24'),
+(4, 'Satay', 'vasr', 'sdhwr', '9122313551', '6ndgh', 'PGDCA', '125552122255', 'http://localhost/eCertificate/uploads/67f92c8a88d37_pxfuel2.jpg', '761WHO5B', 'http://localhost/eCertificate/qrcodes/761WHO5B.png', 'http://localhost/eCertificate/students_certificate.php?student_uniqueID=761WHO5B', '2025-04-11 14:51:54'),
+(5, 'Chandan', 'Suresh', 'Month', '1235452654', 'BCA', 'ADCA', '132132324655', 'http://localhost/eCertificate/uploads/67f92d49c25d6_pxfuel2.jpg', 'NWLPREXO', 'http://localhost/eCertificate/qrcodes/NWLPREXO.png', 'http://localhost/eCertificate/students_certificate.php?student_uniqueID=NWLPREXO', '2025-04-11 14:55:05'),
+(6, 'Rahul', 'bsdfg', 'sbdff', '3232465465', '345', 'ADCA', '657563231324', 'http://localhost/eCertificate/uploads/67f92e1a73124_header-img1.png', 'YVBNUX1K', 'http://localhost/eCertificate/qrcodes/YVBNUX1K.png', 'http://localhost/eCertificate/students_certificate.php?student_uniqueID=YVBNUX1K', '2025-04-11 14:58:34'),
+(7, 'Sonali', 'Sushil', 'Minakshi', '1132321324', 'BCA', 'PGDCA', '123543543354', 'http://localhost/eCertificate/uploads/67f92f9f1f38a_pxfuel.jpg', 'N7T08A5U', 'http://localhost/eCertificate/qrcodes/N7T08A5U.png', 'http://localhost/eCertificate/students_certificate.php?student_uniqueID=N7T08A5U', '2025-04-11 15:05:03');
 
 --
 -- Indexes for dumped tables
@@ -68,7 +74,7 @@ ALTER TABLE `student_directory`
 -- AUTO_INCREMENT for table `student_directory`
 --
 ALTER TABLE `student_directory`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

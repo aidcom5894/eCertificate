@@ -1,6 +1,10 @@
 <?php 
 	include('config.php');
 
+	require 'vendor/autoload.php';
+	use Mpdf\QrCode\QrCode;
+	use Mpdf\QrCode\Output;
+
 ?>
 
 <!doctype html>
@@ -109,7 +113,11 @@ $selectCourse = $_POST['selectCourse'];
 $studentAadhar = $_POST['studentAadhar'];
 $studentUniqueID = $_POST['studentPortalID'];
 
-$qrCodeContent = $base_url()."students_certificate?student_uniqueID=".$studentUniqueID;
+$qrCodeContent = $base_url."qrcodes/".$studentUniqueID.".png";
+
+$qrDetails = "Student Name: $studentsName \n****\n Selected Course: $selectCourse \n****\n Enrollment ID : $studentUniqueID \n****\n Father's Name: $fathersName  \n****\n Mother's Name: $mothersName \n****\n Contact No.: $contactNo";
+
+$studentQRDetails = $base_url."students_certificate.php?student_uniqueID=".$studentUniqueID;
 
 $verifyData = mysqli_query($config,"SELECT * FROM student_directory WHERE contact_no = '$contactNo' OR student_aadhar = '$studentAadhar'");
 
@@ -127,11 +135,22 @@ if(isset($_POST['enrollStudents']))
 		echo "<script>alert('Duplicate Data Found');window.location.href='$base_url'</script>";
 	}
 	
-	else if(move_uploaded_file($tempName, $folderPath.$orgName))
+	else if(mysqli_num_rows($verifyData) == 0)
 	{
-		mysqli_query($config,"INSERT INTO student_directory(student_name,father_name,mother_name,contact_no,previous_degree,selected_course,student_aadhar,student_image,student_uniqueID,qr_details)VALUES('$studentsName','$fathersName','$mothersName','$contactNo','$previousDegree','$selectCourse','$studentAadhar','$completeImageUpload','$studentUniqueID','$qrCodeContent')");
+		move_uploaded_file($tempName, $folderPath.$orgName);
 
-	 	echo "<script>alert('Student Enrolled Successfully');window.location.href='enrolled_students.php'</script>";
+		mysqli_query($config,"INSERT INTO student_directory(student_name,father_name,mother_name,contact_no,previous_degree,selected_course,student_aadhar,student_image,student_uniqueID,qr_details,	qr_detailed_address)VALUES('$studentsName','$fathersName','$mothersName','$contactNo','$previousDegree','$selectCourse','$studentAadhar','$completeImageUpload','$studentUniqueID','$qrCodeContent','$studentQRDetails')");
+
+		$qrCode = new QrCode($qrDetails);
+
+		$output = new Output\Png();
+		$data = $output->output($qrCode, 300, [255, 255, 255], [0, 0, 0]);
+
+		$filename = $studentUniqueID.'.png';
+		$filepath = 'qrcodes/' . $filename; 
+		file_put_contents($filepath, $data);
+
+	 	echo "<script>alert('Student Enrolled Successfully');window.location.href='enrolled_students.php';</script>";
 	}
 	else
 	{
