@@ -1,9 +1,9 @@
 <?php 
 	include('config.php');
 
-	require 'vendor/autoload.php';
-	use Mpdf\QrCode\QrCode;
-	use Mpdf\QrCode\Output;
+	// require 'vendor/autoload.php';
+	// use Mpdf\QrCode\QrCode;
+	// use Mpdf\QrCode\Output;
 
 ?>
 
